@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .max-w-400 {
             max-width: 400px;
@@ -21,13 +22,7 @@
         }
     </style>
 </head>
-<body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about">About Us</a>
-        <a href="/contact">Contact Us</a>
-    </nav>
-
+<body class="bg-gray-700 p-6 max-w-xl mx-auto">
     <main>
         {{ $slot }}
     </main>
