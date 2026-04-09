@@ -22,5 +22,9 @@
  >Resource
  >Idea
 
+// Generate a new Form Request Class
+>php artisan make:request
+    StoreIdeaRequest
+
 
 
