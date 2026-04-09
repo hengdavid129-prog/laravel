@@ -33,3 +33,15 @@
 // Generate a SessionsController
 >php artisan make:controller
     >Auth/SessionController
+
+// Refresh our migrations from scratch 
+>php artisan migrate:fresh  // That also wipee your record
+
+ // Use Auth::user() to access the currently authenticated user
+
+// This is hust a tiny bit about Model factories.
+// reach for model and say call this factoring method to quickly whip up effectively a dummy user record and then persist it in the database
+// it's grabbing fake data and this is incredibly useful for local development and especially testing down the road.
+
+ >php artisan tinker
+ >App\Models\User::factory()->create()
