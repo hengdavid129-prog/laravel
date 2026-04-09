@@ -70,7 +70,9 @@ class IdeaController extends Controller
      */
     public function update(IdeaRequest $request, Idea $idea)
     {
-        
+        $validatedData = $request->validated();
+
+        $idea->update($validatedData);  
 
         return redirect("/ideas/{$idea->id}");
     }

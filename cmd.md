@@ -26,5 +26,10 @@
 >php artisan make:request
     StoreIdeaRequest
 
+// Generate a new RegisterUserController
+>php artisan make:controller
+    >Auth/RegisterUserController
 
-
+// Generate a SessionsController
+>php artisan make:controller
+    >Auth/SessionController
