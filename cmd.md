@@ -45,3 +45,39 @@
 
  >php artisan tinker
  >App\Models\User::factory()->create()
+
+ // Define the relationship with Eloquent
+ // create a method in Models/Idea.php
+
+    // define the relationship an idea belong to user
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // test this in the terminal
+    > php artisan tinker
+        // find the first idea in database
+        > $idea = App\Models\Idea::first()      // show the first idea in database
+        > $idea->user;      // access the user that create the idea. behind the scenes that going to perform a database query SELECT * FROM user WHERE id = 2;
+
+    // the inverse if we have user instance and we want to access their ideas
+    // in Models/User.php
+
+    public function ideas(): HasMany
+    {
+        return $this->hasMany(Idea::class);
+    }
+
+    // testing in terminal
+    > php artisan tinker
+        > $user = App\Models\User::first();
+        > $user->ideas;      // User idea could return one or many ideas so we get the collection of items
+
+    // grab the first idea
+    > $user->ideas[0];
+
+    // grab the description
+    >$user->ideas[0]->description;
+
+

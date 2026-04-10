@@ -14,12 +14,12 @@ class IdeaController extends Controller
      */
     public function index()
     {
-        $idea = Idea::query()->where([
-            'user_id' =>Auth::id(),
-        ])->get();
+        // $idea = Idea::query()->where([
+        //     'user_id' =>Auth::id(),
+        // ])->get();
 
         return view('ideas.index', [
-            'ideas' => $idea
+            'ideas' => Auth::user()->ideas,
         ]);
     }
 
@@ -40,10 +40,15 @@ class IdeaController extends Controller
         //     'description' => ['required', 'min:10'],
         // ]);
 
-        Idea::create([
+        // Idea::create([
+        //     'description' => request('description'),
+        //     'state' => 'pending',
+        //     'user_id' => Auth::id()
+        // ]);
+
+        Auth::user()->ideas()->create([
             'description' => request('description'),
-            'state' => 'pending',
-            'user_id' => Auth::id()
+            'state'=> 'pending',
         ]);
 
         return redirect('/ideas');
