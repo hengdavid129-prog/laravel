@@ -36,8 +36,18 @@ class User extends Authenticatable
         ];
     }
 
+    // public function isAdmin()
+    // {
+    //     return $this->role === 'admin';
+    // }
+
     public function ideas(): HasMany
     {
         return $this->hasMany(Idea::class);
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->id === 1; // only john is an admin.
     }
 }

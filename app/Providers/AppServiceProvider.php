@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +22,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::define('view-admin', function (User $user) {
+            // if ($user->id === 1) {
+            //     return Response::allow();
+            // }
+
+            // return Response::denyAsNotFound();
+
+            // recommend in case you working alone on a small or medium project
+            return $user->isAdmin() ? Response::allow() : Response::denyAsNotFound();
+        });
     }
 }
