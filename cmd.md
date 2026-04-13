@@ -80,4 +80,11 @@
     // grab the description
     >$user->ideas[0]->description;
 
+    // you can think of the gate API sort of like the route closure equivalent for authorization rules
+    // Policies are sort of like the controller equivalent thet allow us to assign authorization rules specifically for a model.
+
+    // make a new policy
+    >php artisan make:policy
+        >IdeaPolicy
+
 
