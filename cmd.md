@@ -91,4 +91,41 @@
     >php artisan make:policy
         >IdeaPolicy
 
+// Notification
+    //whatever we persist a new idea in the database, as pert of that, we also going to notify the owner
+    Inorder to make use of this feature we need to run a migration to set up the notifications table
+
+    >php artisan make:notifications-table
+    >php artisan migrate
+
+    // boot up Tinker
+    // Access notifications for the first user
+    // And we get a collection of notifications that of course is empty
+    > php artisan tinker
+    > App\Models\User::first()->notifications
+
+    // Save this to Jonh
+    > $jonh = App\Models\User::first();
+
+    // Make a new notification
+    >php artisan make:notification
+    >IdeaPublished
+    >No
+
+    // php artisan tinker
+    // $jonh = App\Models\User::first();
+    // $jonh->notify(new App\Notifications\IdeaPublished(App\Models\Idea::latest()->first()));
+
+    // To view the mail we have sent Storage\logs\laravels.log
+    // To see it as part of an actual mail GUI 
+    // handful tool that we can reach for that are really greate for testing your emails things like Helo or Mail Trap or Mail Pit
+    // .env config for Mail pit
+        MAIL_MAILER=smtp
+        MAIL_SCHEME=null
+        MAIL_HOST=127.0.0.1
+        MAIL_PORT=1025
+        MAIL_USERNAME=null
+        MAIL_PASSWORD=null
+        MAIL_FROM_ADDRESS="admin@laracast.com"
+        MAIL_FROM_NAME="${APP_NAME}"
 

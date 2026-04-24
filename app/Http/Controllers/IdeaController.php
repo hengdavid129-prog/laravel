@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\IdeaRequest;
 use App\Models\Idea;
+use App\Notifications\IdeaPublished;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use function Laravel\Prompts\notify;
 
 class IdeaController extends Controller
 {
@@ -47,10 +49,13 @@ class IdeaController extends Controller
         //     'user_id' => Auth::id()
         // ]);
 
-        Auth::user()->ideas()->create([
+        $idea = Auth::user()->ideas()->create([
             'description' => request('description'),
             'state'=> 'pending',
         ]);
+
+        // notify the user
+        Auth::user()->notify(new IdeaPublished($idea));
 
         return redirect('/ideas');
     }
