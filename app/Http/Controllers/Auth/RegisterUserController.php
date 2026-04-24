@@ -32,7 +32,7 @@ class RegisterUserController extends Controller
 
         // log them in
         Auth::login($user);
-
+        
         // redirect home
         return redirect('/ideas');
     }

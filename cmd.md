@@ -17,6 +17,10 @@
 >php artisan make:migration add_state_to_idea_table
 >php artisan migrate
 
+// create an eloquent model
+> php artisan make:model
+    >Idea
+
 // Make Idea Controller
 >php artisan make:controller
  >Resource
