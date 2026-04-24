@@ -129,3 +129,19 @@
         MAIL_FROM_ADDRESS="admin@laracast.com"
         MAIL_FROM_NAME="${APP_NAME}"
 
+// Queue
+// queue versus job versus worker
+    worker : A person that take a job from the queue and work on it
+    job : A task that need to be performed
+    queue : The container that houses all jobs that need to be work on.
+
+>php artisan queue:work
+
+>php artisan make:job
+    >UpdateIdeaStatistics
+
+// Manually dispatch the job
+>php artisan tinker
+    >App\Jobs\UpdateIdeaStatistics::dispatch();
+    
+>php artisan queue:work
