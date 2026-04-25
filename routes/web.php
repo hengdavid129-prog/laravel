@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return 'Placeholder for home page.';
+    return 'Welcome to the homepage';
 });
 
 Route::middleware('auth')->group(function () {
